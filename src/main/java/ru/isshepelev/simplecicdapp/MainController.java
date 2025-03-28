@@ -20,6 +20,11 @@ public class MainController {
         return "controller 1";
     }
 
+    @GetMapping("/second")
+    public String second(){
+        return "controller 2";
+    }
+
     @GetMapping("/count")
     public int count(){
         Optional<Count> count = countRepository.findById(1l);
