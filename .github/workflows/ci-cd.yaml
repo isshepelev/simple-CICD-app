@@ -51,8 +51,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             apt update
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
             mkdir -p ~/app && cd ~/app
             git clone https://github.com/isshepelev/simple-CICD-app.git && cd simple-CICD-app
+            docker pull ${{ secrets.DOCKER_USERNAME }}/cicd-app:latest
             docker-compose pull
             docker-compose down
             docker-compose up -d --force-recreate --remove-orphans

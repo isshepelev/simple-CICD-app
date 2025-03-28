@@ -7,7 +7,7 @@ RUN mvn clean verify
 
 FROM openjdk:17-oracle
 ENV JAVA_OPTS="-Xmx256m"
-COPY --from=build /app/target/cicd-*.jar app.jar
+COPY --from=build /app/target/simple-CICD-app-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 CMD ["sh", "-c", "exec java -Djava.security.egd=file:/dev/./urandom $JAVA_OPTS -jar app.jar"]
 
