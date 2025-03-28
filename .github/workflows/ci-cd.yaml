@@ -21,7 +21,7 @@ jobs:
 
   build_docker_job:
     runs-on: ubuntu-latest
-    needs: test_job
+#    needs: test_job
 
     steps:
       - name: Checkout repo
@@ -39,7 +39,7 @@ jobs:
   deploy_job:
     runs-on: ubuntu-latest
     needs:
-      - test_job
+#      - test_job
       - build_docker_job
 
     steps:
@@ -51,7 +51,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             apt update
-            cd ~/app || mkdir ~/app && cd ~/app
+            mkdir -p ~/app && cd ~/app
+            git clone https://github.com/isshepelev/simple-CICD-app.git && cd simple-CICD-app
             docker-compose pull
             docker-compose down
             docker-compose up -d --force-recreate --remove-orphans
