@@ -18,10 +18,10 @@ public class MainController {
         return "controller 1";
     }
 
-//    @GetMapping("/second")
-//    public String second(){
-//        return "controller 2";
-//    }
+    @GetMapping("/second")
+    public String second(){
+        return "controller 2";
+    }
 
     @GetMapping("/count")
     public int count(){

@@ -46,7 +46,7 @@ jobs:
               git pull origin main
             fi
           
-            docker-compose down || true
+            docker-compose stop app || true
 
             docker pull ${{ secrets.DOCKER_USERNAME }}/cicd-app:latest
 
