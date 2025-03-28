@@ -1,15 +1,13 @@
 package ru.isshepelev.simplecicdapp;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class DataLouder implements CommandLineRunner {
     private final CountRepository countRepository;
-
-    public DataLouder(CountRepository countRepository) {
-        this.countRepository = countRepository;
-    }
 
     @Override
     public void run(String... args) throws Exception {

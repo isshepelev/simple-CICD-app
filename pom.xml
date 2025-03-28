@@ -10,7 +10,7 @@
     </parent>
     <groupId>ru.isshepelev</groupId>
     <artifactId>simple-CICD-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>01</version>
     <name>simple-CICD-app</name>
     <description>simple-CICD-app</description>
     <url/>
@@ -44,10 +44,12 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.36</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

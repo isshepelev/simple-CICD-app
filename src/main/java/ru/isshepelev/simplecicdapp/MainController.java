@@ -1,19 +1,17 @@
 package ru.isshepelev.simplecicdapp;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 public class MainController {
 
     private final CountRepository countRepository;
-
-    public MainController(CountRepository countRepository) {
-        this.countRepository = countRepository;
-    }
 
     @GetMapping("/first")
     public String first(){

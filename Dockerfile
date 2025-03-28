@@ -1,14 +1,9 @@
-FROM maven as build
+FROM maven:latest AS build
 WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
-COPY /src ./src
+COPY . .
 RUN mvn clean verify
 
 FROM openjdk:17-oracle
-ENV JAVA_OPTS="-Xmx256m"
-COPY --from=build /app/target/simple-CICD-app-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/simple-CICD-app-*.jar app.jar
 EXPOSE 8080
-CMD ["sh", "-c", "exec java -Djava.security.egd=file:/dev/./urandom $JAVA_OPTS -jar app.jar"]
-
-
+CMD ["sh", "-c", "exec java -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
