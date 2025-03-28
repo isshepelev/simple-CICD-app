@@ -23,6 +23,11 @@ public class MainController {
         return "controller 2";
     }
 
+    @GetMapping("/third")
+    public String third(){
+        return "controller 3";
+    }
+
     @GetMapping("/count")
     public int count(){
         Optional<Count> count = countRepository.findById(1l);
