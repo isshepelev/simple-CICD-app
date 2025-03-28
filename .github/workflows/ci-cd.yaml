@@ -8,9 +8,6 @@ jobs:
       - name: checkout репозитория
         uses: actions/checkout@v4
 
-      - name: установка maven
-        run: apt install maven -y
-
       - name: сборка проекта
         run: mvn clean verify
 
@@ -49,8 +46,8 @@ jobs:
               git pull origin main
             fi
           
-            docker compose down || true
+            docker-compose down || true
 
             docker pull ${{ secrets.DOCKER_USERNAME }}/cicd-app:latest
 
-            docker compose up -d --build
+            docker-compose up -d --build
